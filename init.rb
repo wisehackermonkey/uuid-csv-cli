@@ -13,7 +13,7 @@ p uuids.total
 p UUID.new(1).generate
 p UUID.new(10000).generate
 uuids.generate
-uuids.save_to_file("test")
+uuids.save_to_file("tester.csv")
 
 large = UUID.new(10000)
 large.generate
