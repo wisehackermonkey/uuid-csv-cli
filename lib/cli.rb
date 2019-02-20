@@ -18,6 +18,9 @@ class Cli
       parser.on("-c", "--count COUNT", Integer, "Specify number of uuid's to generate") do |c|
         @options[:count] = c
       end
+      parser.on("-f", "--file FILE", "Specify path to save csv file example -f '/path/to/file.csv'") do |path|
+        @options[:path] = path
+      end
     end.parse!
   end
 end

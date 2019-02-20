@@ -10,4 +10,12 @@ describe 'My behaviour' do
     expect(cli.options[:count]).to be(3)
     ARGV = []
   end
+
+  it "given argment '-f ./file.csv' should  :option[:path] should be './file.csv' " do
+    ARGV = ["-f", "./file.csv"]
+    cli = Cli.new
+    cli.parse_arguments
+    expect(cli.options[:path]).to eq("./file.csv")
+    ARGV = []
+  end
 end
