@@ -9,4 +9,8 @@ require_relative 'lib/cli'
 # p ARGV.inspect
 cli = Cli.new
 cli.parse_arguments
-p cli.options
+total_num_uuid = cli.options[:count]
+
+uuid = UUID.new(total_num_uuid)
+uuid.generate
+uuid.save_to_file("./output.csv")
