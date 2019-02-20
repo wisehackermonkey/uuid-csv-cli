@@ -35,7 +35,7 @@ uuid.save_to_file(:file_name => file)
 # Only print uuids to console if
 # the user hasn't specified a filename
 unless file
-  puts uuid.show
+  # puts uuid.show
   Clipboard.copy(uuid.show)
 end
 puts "Copied UUID's to your clipboard"

@@ -21,10 +21,26 @@ describe 'UUID behavior' do
     uuid.generate
     expect(uuid.uuids).to be_an(Array)
   end
+  it 'should :uuids should be array of 10000' do
+    uuid = UUID.new(:total=>10000)
+    uuid.generate
+    expect(uuid.uuids).to be_an(Array)
+  end
+  it 'should :uuids should be array of 100000' do
+    uuid = UUID.new(:total=>100000)
+    uuid.generate
+    expect(uuid.uuids).to be_an(Array)
+  end
+
+  it 'should :uuids should be array of 1000000' do
+    uuid = UUID.new(:total=>1000000)
+    uuid.generate
+    expect(uuid.uuids).to be_an(Array)
+  end
   it "should return array off uuid's" do
     uuid = UUID.new(:total=>5)
-    uuid_array = uuid.generate
-    expect(validate_uuid_format(uuid_array[0])).to be true
+    uuid.generate
+    expect(validate_uuid_format(uuid.uuids[0])).to be true
   end
 
   it "should #save_to_file create csv file" do
