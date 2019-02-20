@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 require 'rspec'
 require_relative '../lib/uuid'
 
@@ -12,25 +13,25 @@ end
 describe 'UUID behavior' do
 
   it 'when intilized :total eql 5' do
-    uuid = UUID.new(5)
+    uuid = UUID.new(:total=>5)
     expect(uuid.total).to eq(5)
   end
   it 'should :uuids should be array' do
-    uuid = UUID.new(5)
+    uuid = UUID.new(:total=>5)
     uuid.generate
     expect(uuid.uuids).to be_an(Array)
   end
   it "should return array off uuid's" do
-    uuid = UUID.new(5)
+    uuid = UUID.new(:total=>5)
     uuid_array = uuid.generate
     expect(validate_uuid_format(uuid_array[0])).to be true
   end
 
   it "should #save_to_file create csv file" do
     file = "./test.csv"
-    uuid = UUID.new(3)
+    uuid = UUID.new(:total=>3)
     uuid.generate
-    uuid.save_to_file(file)
+    uuid.save_to_file( :file_name => file )
     expect(File.exist?(file)).to be(true)
     if File.exist?(file)
       File.delete(file)
@@ -38,9 +39,9 @@ describe 'UUID behavior' do
   end
   it "should #save_to_file first line to be a UUID" do
     file = "./test.csv"
-    uuid = UUID.new(3)
+    uuid = UUID.new(:total=>3)
     uuid.generate
-    uuid.save_to_file(file)
+    uuid.save_to_file(:file_name => file)
     if File.exist?(file)
       CSV.foreach(file) do |row|
         puts row

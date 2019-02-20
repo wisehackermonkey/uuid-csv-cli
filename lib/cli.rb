@@ -1,4 +1,4 @@
-# this class creates cli (comman line interface) for the uuid csv program
+# this class creates cli (command line interface) for the uuid csv program
 # by oran c
 # oranbusiness@gmail.com
 # github.com/wisehackermonkey
@@ -12,6 +12,8 @@ class Cli
     @options = {}
   end
 
+  # parse the command line arguments example
+  # '-c 23 -f text.csv' = :count = 23 and :path = text.csv
   def parse_arguments
     OptionParser.new do |parser|
       # parser.banner = "Usage: init.rb -c <integer>"
