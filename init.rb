@@ -10,7 +10,9 @@ require_relative 'lib/cli'
 cli = Cli.new
 cli.parse_arguments
 total_num_uuid = cli.options[:count]
-
-uuid = UUID.new(total_num_uuid)
-uuid.generate
-uuid.save_to_file("./output.csv")
+file_path = cli.options[:path]
+p total_num_uuid
+p file_path
+# uuid = UUID.new(total_num_uuid)
+# uuid.generate
+# uuid.save_to_file(file_path)

@@ -39,3 +39,4 @@ build/
 .rvmrc
 
 test
+test\.csv
