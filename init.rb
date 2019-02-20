@@ -4,34 +4,17 @@
 # github.com/wisehackermonkey
 # 20190219
 
+require_relative 'lib/uuid'
+# Testing uuid class
 
-require 'optparse'
+uuids = UUID.new(3)
+p uuids.total
 
-# This will hold the options we parse
-options = {}
+p UUID.new(1).generate
+p UUID.new(10000).generate
+uuids.generate
+uuids.save_to_file("test")
 
-OptionParser.new do |parser|
-
-  # Whenever we see -n or --name, with an
-  # argument, save the argument.
-  parser.on("-n", "--name NAME", "The name of the person to greet.") do |v|
-    options[:name] = v
-  end
-
-  parser.on("-h", "--help", "Show this help message") do ||
-    puts parser
-  end
-
-  parser.on("-c","--count COUNT", Integer, "Repeat the message COUNT times") do |c|
-    options[:count] = c
-  end
-end.parse!
-
-# Now we can use the options hash however we like.
-puts "Hello #{ options[:name] }" if options[:name]
-
-if options[:name]
-  options.fetch(:count, 1).times do
-    puts "Hello #{options[:name]}"
-  end
-end
+large = UUID.new(10000)
+large.generate
+large.save_to_file("./test.csv")
