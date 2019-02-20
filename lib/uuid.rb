@@ -1,5 +1,8 @@
-# this class generates uuid's
-# By oran c
+# this class generates and saves uuid's
+# by oran c
+# oranbusiness@gmail.com
+# github.com/wisehackermonkey
+# 20190219
 #
 require 'SecureRandom'
 require 'csv'
@@ -21,6 +24,7 @@ class UUID
     self.uuids
   end
 
+  # save generated uuid's to a csv file
   def save_to_file(file_name)
     CSV.open(file_name, "wb") do |csv|
       self.uuids.each do |uuid|
