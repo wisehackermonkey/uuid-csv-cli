@@ -27,8 +27,8 @@ class UUID
   def save_to_file(options = {})
     file_name = options[:file_name] || 'output.csv'
     CSV.open(file_name, "wb") do |csv|
-      self.uuids.each do |uuid|
-        csv << [uuid]
+      self.total.times do
+        csv << [SecureRandom.uuid]
       end
     end
   end

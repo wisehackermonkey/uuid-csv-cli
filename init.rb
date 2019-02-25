@@ -13,6 +13,7 @@ require_relative 'lib/cli'
 # allow for copying output to the clipboard
 # https://www.rubydoc.info/gems/clipboard/1.3.3#Usage
 require 'clipboard'
+require 'csv'
 
 puts "UUID Generator By Oran C"
 puts "-"*40
@@ -29,18 +30,20 @@ file = cli.options[:path]
 # Specify the number of uuid's to be generated
 uuid = UUID.new(:total => total_num_uuid )
 # Create uuid's and save them to a csv file
-uuid.generate
 uuid.save_to_file(:file_name => file)
 
 # Only print uuids to console if
 # the user hasn't specified a filename
 unless file
-  # puts uuid.show
-  Clipboard.copy(uuid.show)
+  CSV.foreach('output.csv',&:puts)
+  # Clipboard.copy(buffer)
 end
 puts "Copied UUID's to your clipboard"
 puts "successfully generated ##{total_num_uuid} uuid's"
 puts "Saved uuid's to file : #{file || 'output.csv'}"
 
+at_exit do
+  puts "UUID generator exited..."
+end
 # return 0 means success in linux
 exit 0
